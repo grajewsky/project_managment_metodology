@@ -7,14 +7,15 @@ import java.util.*;
 /**
  * Created by Qriss on 2016-04-25.
  */
-public class lmax {
+public class lmax implements Equation{
 
     public List<Task> zadania = new ArrayList<Task>();
     public int n;
     public int t;
     public int l=0;
+    private String title;
 
-    private class Task
+    public class Task
     {
         public int id;
         public int value;
@@ -27,6 +28,12 @@ public class lmax {
 
         }
     }
+
+    @Override
+    public void setMenu(String title) {
+        this.title = title;
+    }
+
     public void input()
     {
 
@@ -86,5 +93,10 @@ public class lmax {
             System.out.print(pomocnicza.id+", ");
         }
         System.out.println(" Lmax: "+l);
+    }
+
+    @Override
+    public String menu() {
+        return this.title;
     }
 }
