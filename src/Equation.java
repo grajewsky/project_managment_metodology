@@ -7,4 +7,5 @@ public interface Equation {
     public void todo();
     public void output();
     public String menu();
+    
 }
