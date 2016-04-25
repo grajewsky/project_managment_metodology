@@ -8,7 +8,14 @@ public class cmax implements Equation
     private int[] p;
     private int cmax_value=0;
     private Scanner input;
-    
+
+    private String title;
+
+    @Override
+    public void setMenu(String title) {
+        this.title = title;
+    }
+
     @Override
     public void input(){
         String text = "Podaj ilość zadań: ";
@@ -48,7 +55,12 @@ public class cmax implements Equation
         }
         System.out.print("}\nCmax = "+ this.cmax_value);
     }
-    
+
+    @Override
+    public String menu() {
+        return this.title;
+    }
+
     //pomocnicze metody z ograniczeniem dla wprowadzanej wartości
     private int isNegative(int number, String text){
         if(number <= 0){
