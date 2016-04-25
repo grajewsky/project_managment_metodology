@@ -4,6 +4,9 @@
 public class main {
 
     public static void main(String[] args){
-        
+        lmax przyklad = new lmax();
+        przyklad.input();
+        przyklad.todo();
+        przyklad.output();
     }
 }
