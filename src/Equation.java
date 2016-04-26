@@ -5,7 +5,7 @@ public interface Equation {
     public void setMenu(String title);
     public void input();
     public void todo();
-    public void output();
+    public Object output();
     public String menu();
     
 }
