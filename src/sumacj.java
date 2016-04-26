@@ -85,7 +85,7 @@ public class sumacj implements Equation {
     }
 
     @Override
-    public void output() {
+    public Object output() {
         System.out.format("\n\n ###### WYNIK ###### \n\n");
         Iterator<Job> it = (Iterator<Job>) jobs.iterator();
         suma = 0;
@@ -101,6 +101,7 @@ public class sumacj implements Equation {
 
         System.out.print("} \n");
         System.out.println("Suma Cj = "+suma);
+        return null;
     }
 
     @Override
