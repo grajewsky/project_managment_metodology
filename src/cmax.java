@@ -1,14 +1,33 @@
-/*Created by Łukasz Nawrocki
-*/
+/*Created by Łukasz Nawrocki*/
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class cmax implements Equation
 {
-    private int[] p;
-    private int cmax_value=0;
+	public List<Task> zadania = new ArrayList<Task>();
+	public class Task{
+		public int id;
+		public int value;
+		public Task(int i, int v){
+			this.id = i;
+			this.value = v;
+		}
+	}
+	
+	public Zwroc zwroc;
+	public class Zwroc{
+		public List<Task> tasks;
+		public int t0;
+		public int cmax;
+		public Zwroc(List<Task> zadania, int t0){
+			this.tasks = zadania;
+			this.t0 = t0;
+		}
+	}
+	
     private Scanner input;
-
     private String title;
 
     @Override
@@ -21,40 +40,34 @@ public class cmax implements Equation
         String text = "Podaj ilość zadań: ";
         System.out.print('\u000C'+text);
         input = new Scanner(System.in);
-        this.p = new int[isNegative(input.nextInt(), text)];
+        int n = isNegative(input.nextInt(), text);
         
         System.out.println('\u000C'+"Podaj czasy wykonywania zadań: ");
-        for(int x=0; x<this.p.length; x++){
+        for(int x=0; x<n; x++){
             text = "p"+(x+1)+"= ";
             System.out.print(text);
             input = new Scanner(System.in);
-            this.p[x] = isNegative_from0(input.nextInt(), text);
+            this.zadania.add(new Task((x+1), isNegative_from0(input.nextInt(), text)));
         }
         
         text = "Podaj czas początkowy t0: ";
         System.out.print('\u000C'+text);
         input = new Scanner(System.in);
-        this.cmax_value = isNegative_from0(input.nextInt(), text);
+        
+        //tworzymy obiekt który będziemy zwracać w output()
+        this.zwroc = new Zwroc(this.zadania, isNegative_from0(input.nextInt(), text));
     }
     
     @Override
     public void todo(){
-        for(int i=0; i<this.p.length; i++){
-            this.cmax_value += this.p[i];
+        for(int i=0; i<this.zadania.size(); i++){
+            this.zwroc.cmax += (this.zadania.get(i)).value;
         }
     }
     
     @Override
     public Object output(){
-        System.out.print("\n\n{");
-        for(int i=0; i<this.p.length; i++){
-            if(i!=(this.p.length-1))
-                System.out.print(this.p[i] + ",");
-            else
-                System.out.print(this.p[i]);
-        }
-        System.out.print("}\nCmax = "+ this.cmax_value);
-        return null;
+        return this.zwroc;
     }
 
     @Override
