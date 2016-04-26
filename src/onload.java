@@ -45,8 +45,8 @@ public class onload implements Equation {
     }
 
     @Override
-    public void output() {
-
+    public Object output() {
+        return null;
     }
 
     @Override
