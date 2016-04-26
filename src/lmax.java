@@ -82,7 +82,7 @@ public class lmax implements Equation{
 
     }
 
-    public void output()
+    public Object output()
     {
         System.out.println("\f");
         Task pomocnicza;
@@ -93,6 +93,8 @@ public class lmax implements Equation{
             System.out.print(pomocnicza.id+", ");
         }
         System.out.println(" Lmax: "+l);
+
+        return null;
     }
 
     @Override

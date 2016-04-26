@@ -45,7 +45,7 @@ public class cmax implements Equation
     }
     
     @Override
-    public void output(){
+    public Object output(){
         System.out.print("\n\n{");
         for(int i=0; i<this.p.length; i++){
             if(i!=(this.p.length-1))
@@ -54,6 +54,7 @@ public class cmax implements Equation
                 System.out.print(this.p[i]);
         }
         System.out.print("}\nCmax = "+ this.cmax_value);
+        return null;
     }
 
     @Override
